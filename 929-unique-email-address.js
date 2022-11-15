@@ -18,7 +18,25 @@ Given an array of strings emails where we send one email to each emails[i], retu
 different addresses that actually receive mails.
 */
 
-const numUniqueEmails = function (emails) {}
+const numUniqueEmails = function (emails) {
+  const set = new Set()
+
+  for (let email of emails) {
+    const noAt = email.split("@")
+    const [localName, domainName] = [noAt[0].split(""), noAt[1]]
+
+    let filteredLocalName = localName.filter(character => character != ".")
+
+    if (filteredLocalName.includes("+"))
+      filteredLocalName.splice(filteredLocalName.indexOf("+"))
+
+    const emailFiltered = [filteredLocalName.join(""), domainName].join("@")
+
+    if (!set.has(emailFiltered)) set.add(emailFiltered)
+  }
+
+  return set.size
+}
 
 const emails = [
   "test.email+alex@leetcode.com",
@@ -26,4 +44,4 @@ const emails = [
   "testemail+david@lee.tcode.com",
 ]
 
-console.log(numUniqueEmails(emails))
+console.log(numUniqueEmails(emails)) // Expected: 2

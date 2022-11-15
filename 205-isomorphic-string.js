@@ -10,7 +10,21 @@
  * t.length == s.length
  */
 
-const isIsomorphic = function (s, t) {}
+const isIsomorphic = function (s, t) {
+  const set = new Set()
+  const sLetters = s.split("")
+  const tLetters = t.split("")
+
+  for (let index in s) {
+    if (!set.has(s[index])) set[s[index]] = t[index]
+  }
+
+  for (let index in sLetters) {
+    if (t.includes(set[sLetters[index]])) t[index]
+  }
+
+  return sLetters.join("")
+}
 
 const s = "egg",
   t = "add"

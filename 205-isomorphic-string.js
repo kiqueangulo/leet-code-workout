@@ -11,22 +11,35 @@
  */
 
 const isIsomorphic = function (s, t) {
-  const set = new Set()
   const sLetters = s.split("")
   const tLetters = t.split("")
+  const setS = new Set(sLetters)
+  const setT = new Set(tLetters)
 
-  for (let index in s) {
-    if (!set.has(s[index])) set[s[index]] = t[index]
+  if (setT.size < setS.size) {
+    for (let index in t) {
+      if (!setT[t[index]]) setT[t[index]] = s[index]
+    }
+
+    for (let index in tLetters) {
+      if (setT[tLetters[index]]) tLetters[index] = setT[tLetters[index]]
+    }
+
+    return tLetters.join("") == s
+  } else {
+    for (let index in s) {
+      if (!setS[s[index]]) setS[s[index]] = t[index]
+    }
+
+    for (let index in sLetters) {
+      if (setS[sLetters[index]]) sLetters[index] = setS[sLetters[index]]
+    }
+
+    return sLetters.join("") == t
   }
-
-  for (let index in sLetters) {
-    if (t.includes(set[sLetters[index]])) t[index]
-  }
-
-  return sLetters.join("")
 }
 
-const s = "egg",
-  t = "add"
+const s = "abdc",
+  t = "baba"
 
-console.log(isIsomorphic(s, t)) // Expected: true
+console.log(isIsomorphic(s, t)) // Expected: false

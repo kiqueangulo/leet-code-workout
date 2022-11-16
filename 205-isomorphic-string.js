@@ -7,7 +7,7 @@
  * a character may map to itself.
  *
  * Constrains:
- * t.length == s.length
+ *    t.length == s.length
  */
 
 const isIsomorphic = function (s, t) {

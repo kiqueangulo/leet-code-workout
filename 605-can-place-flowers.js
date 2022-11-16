@@ -12,9 +12,24 @@
  *      0 <= n <= flowerbed.length
  */
 
-const canPlaceFlowers = function (flowerbed, n) {}
+const canPlaceFlowers = function (flowerbed, n) {
+  const extendedFlowerbed = [0, ...flowerbed, 0]
 
-const flowerbed = [1, 0, 0, 0, 1]
-const n = 1
+  for (let i = 1; i < extendedFlowerbed.length - 1; ++i) {
+    if (
+      extendedFlowerbed[i - 1] == 0 &&
+      extendedFlowerbed[i] == 0 &&
+      extendedFlowerbed[i + 1] == 0
+    ) {
+      extendedFlowerbed[i] = 1
+      n -= 1
+    }
+  }
+
+  return n <= 0
+}
+
+const flowerbed = [1, 0, 0, 0, 1, 0, 0]
+const n = 2
 
 console.log(canPlaceFlowers(flowerbed, n))

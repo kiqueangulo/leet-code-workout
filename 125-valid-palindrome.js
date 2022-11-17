@@ -10,21 +10,38 @@
  */
 
 const isPalindrome = function (s) {
-  const characters = s.toLowerCase().split("")
-  let forward = [],
-    backwards = []
+  // Solution #1
+  //   const characters = s.toLowerCase().split("")
+  //   let forward = [],
+  //     backwards = []
 
-  for (let symbol of characters) {
-    if (symbol.match(/[a-z0-9]/)) {
-      forward.push(symbol)
-      backwards.unshift(symbol)
-    }
-  }
+  //   for (let symbol of characters) {
+  //     if (symbol.match(/[a-z0-9]/)) {
+  //       forward.push(symbol)
+  //       backwards.unshift(symbol)
+  //     }
+  //   }
 
-  for (let index in forward) {
-    if (forward[index] !== backwards[index]) {
-      return false
-    }
+  //   for (let index in forward) {
+  //     if (forward[index] !== backwards[index]) {
+  //       return false
+  //     }
+  //   }
+
+  //   return true
+
+  //Solution #2
+  if (s.length == 0 || s.length == 1) return true
+
+  const newS = s.replace(/[\W_]+/g, "").toLowerCase()
+
+  let [L, R] = [0, newS.length - 1]
+
+  while (L < R) {
+    if (newS[L] !== newS[R]) return false
+
+    L++
+    R--
   }
 
   return true

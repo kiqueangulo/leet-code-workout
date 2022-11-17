@@ -9,28 +9,30 @@
  *      s consists only of printable ASCII characters.
  */
 
-const isPalindrome = function (s) {
-  // Solution #1
-  //   const characters = s.toLowerCase().split("")
-  //   let forward = [],
-  //     backwards = []
+// Solution #1
+const isPalindrome1 = function (s) {
+  const characters = s.toLowerCase().split("")
+  let forward = [],
+    backwards = []
 
-  //   for (let symbol of characters) {
-  //     if (symbol.match(/[a-z0-9]/)) {
-  //       forward.push(symbol)
-  //       backwards.unshift(symbol)
-  //     }
-  //   }
+  for (let symbol of characters) {
+    if (symbol.match(/[a-z0-9]/)) {
+      forward.push(symbol)
+      backwards.unshift(symbol)
+    }
+  }
 
-  //   for (let index in forward) {
-  //     if (forward[index] !== backwards[index]) {
-  //       return false
-  //     }
-  //   }
+  for (let index in forward) {
+    if (forward[index] !== backwards[index]) {
+      return false
+    }
+  }
 
-  //   return true
+  return true
+}
 
-  //Solution #2
+//Solution #2
+const isPalindrome2 = function (s) {
   if (s.length == 0 || s.length == 1) return true
 
   const newS = s.replace(/[\W_]+/g, "").toLowerCase()
@@ -49,4 +51,5 @@ const isPalindrome = function (s) {
 
 const s = "A man, a plan, a canal: Panama"
 
-console.log(isPalindrome(s)) // true
+console.log(isPalindrome1(s)) // true
+console.log(isPalindrome2(s)) // true

@@ -8,7 +8,18 @@
  *      s and t consist of lowercase English letters.
  */
 
-const isAnagram = function (s, t) {}
+const isAnagram = function (s = "", t = "") {
+  if (s.length !== t.length) return false
+
+  const sSorted = s.split("").sort()
+  const tSorted = t.split("").sort()
+
+  for (let index in sSorted) {
+    if (sSorted[index] !== tSorted[index]) return false
+  }
+
+  return true
+}
 
 const s = "anagram"
 const t = "nagaram"

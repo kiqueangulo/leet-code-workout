@@ -6,9 +6,24 @@
  * of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
  */
 
-const isSubsequence = function (s, t) {}
+const isSubsequence = function (s, t) {
+  if (!s) return true
 
-const s = "abc"
+  const sLastIndex = s.length - 1
+  let sIndex = 0
+
+  for (let i = 0; i < t.length; i++) {
+    if (s[sIndex] !== t[i]) continue
+
+    if (sIndex === sLastIndex) return true
+
+    sIndex++
+  }
+
+  return false
+}
+
+const s = "acb"
 const t = "ahbgdc"
 
 console.log(isSubsequence(s, t))

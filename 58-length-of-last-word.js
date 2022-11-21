@@ -10,6 +10,17 @@
  */
 
 const lengthOfLastWord = function (s) {
+  return s
+    .split(" ")
+    .filter(element => element)
+    .pop().length
+}
+
+const s = "   fly me   to   the moon  "
+
+console.log(lengthOfLastWord(s))
+
+/*
   let noSpace = ""
 
   for (let i = 0; i < s.length - 1; i++) {
@@ -19,8 +30,4 @@ const lengthOfLastWord = function (s) {
   }
 
   return noSpace
-}
-
-const s = "   fly me   to   the moon  "
-
-console.log(lengthOfLastWord(s))
+*/

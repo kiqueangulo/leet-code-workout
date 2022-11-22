@@ -8,9 +8,19 @@
  * You can return the answer in any order.
  */
 
-const twoSum = function (nums, target) {}
+const twoSum = function (nums, target) {
+  const saver = {}
 
-const nums = [2, 7, 11, 15]
-const target = 9
+  for (let i = 0; i < nums.length; i++) {
+    const difference = target - nums[i]
+
+    if (saver[difference] !== undefined) return [saver[difference], i]
+
+    saver[nums[i]] = i
+  }
+}
+
+const nums = [3, 2, 4]
+const target = 6
 
 console.log(twoSum(nums, target))

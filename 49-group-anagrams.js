@@ -8,7 +8,18 @@
  *      strs[i] consists of lowercase English letters.
  */
 
-const groupAnagrams = function (strs) {}
+const groupAnagrams = function (strs) {
+  const sorted = {}
+
+  for (let word of strs) {
+    const wordSorted = word.split("").sort().join("")
+
+    if (!sorted[wordSorted]) sorted[wordSorted] = [word]
+    else sorted[wordSorted].push(word)
+  }
+
+  return Object.values(sorted)
+}
 
 const strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
